@@ -26,3 +26,11 @@ Route::post('/sign-up', 'SignUpController@submit')->name('sign-up-submit');
 
 Route::get('/sign-in', 'SignInController@show')->name('sign-in');
 Route::post('/sign-in', 'SignInController@submit')->name('sign-in-submit');
+
+Route::post('/user/subscribe', 'SubscribeController@submit')->name('subscribe-submit');
+
+Route::get('/sign-out', 'SignInController@signOut')->name('sign-out');
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

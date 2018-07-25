@@ -13,13 +13,14 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+
+
+  <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
     <title>Hello, world!</title>
 
-    <style>
-        body  {
-            background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%) !important;
-        }
-        </style>
   </head>
   <body>
       <!--
@@ -46,7 +47,16 @@
 
             -->
 
-    <div class="container mt-5 bg-white p-3 rounded">
+    <header class="container mt-4 p-0 text-center" style="color:rgba(255,255,255,0.7);">
+      <div class="row">
+        <div class="col-12">
+            <h3 class="display-2"><i class="far fa-newspaper"></i> Newsfly</h3>
+        </div>
+      </div>
+    </header>
+
+
+    <div class="container mt-2 p-4" style="background: rgb(244,244,244); box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.1);">
         <div class="row">
           <div class="col-12">
             @if(Session::has('messages'))
@@ -72,13 +82,22 @@
         </div>
         <div class="row">
             <div class="col-12">
-       
+                <div class="display-4">@yield('title')</div>
 
                               @yield('content')
 
             </div>
         </div>
+
     </div>
+
+    <footer class="container mt-2 footer">
+      <div class="row">
+        <div class="col-12">
+        <a href="{{ route('home') }}">Newsfly</a> (&copy;) 2018
+        </div>
+      </div>
+      </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

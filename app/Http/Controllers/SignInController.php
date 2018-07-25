@@ -22,4 +22,11 @@ class SignInController extends Controller
             return back()->with('messages', ['Account does not exist or email and password do not match!']);
         }
     }
+
+    public function signOut()
+    {
+        Auth::logout();
+
+        return back()->with('messages', ['You have been signed out!']);
+    }
 }

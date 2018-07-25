@@ -24,7 +24,7 @@
     <title>Hello, world!</title>
   </head>
   <body>
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%) !important;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="#"><i class="far fa-newspaper"></i> Newsfly</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
@@ -32,19 +32,22 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav">
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{{ route('home') }}">Home</a>
                     </li>
                     @guest
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Sign Up</a>
+                    <a class="nav-link" href="{{ route('sign-up') }}">Sign Up</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Sign In</a>
+                    <a class="nav-link" href="{{ route('sign-in') }}">Sign In</a>
                     </li>
                     @endguest
                     @auth
                     <li class="nav-item">
                       <a class="nav-link" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('sign-out') }}">Sign out</a>
                     </li>
                     @endauth
                   </ul>
