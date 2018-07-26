@@ -61,21 +61,21 @@
           <div class="col-12">
             @if(Session::has('messages'))
               <div class="alert alert-primary" role="alert">
-                  <ul>
+           
                     @foreach(Session::get('messages') as $message) 
-                      <li>{{ $message }} </li>
+                     {{ $message }} 
                     @endforeach
-                  </ul>
+               
                 </div>
             @endif
 
                 @if ($errors->any())
                 <div class="alert alert-danger" role="alert">
-                    <ul>
+                 
                         @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                            {{ $error }}
                         @endforeach
-                    </ul>
+               
                   </div>
                 @endif
           </div>

@@ -14,8 +14,11 @@ class PostsController extends Controller
 
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $posts = $request->user()->posts()->orderBy('created_at', 'DESC')->get();
+
+       return view('dashboard.posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -26,6 +29,19 @@ class PostsController extends Controller
     public function create()
     {
         return view('dashboard.posts.create');
+    }
+
+    /**
+     * Remove the post 
+     */
+    public function delete(Request $request, Post $post)
+    {
+        if($request->user()->can('delete', $post)) {
+            $post->delete();
+            return back()->with('messages', ['Post has been removed!']);
+        }
+
+        return back()->with('messages', ['You cannot remove post which does not belong to you!']);
     }
 
     /**

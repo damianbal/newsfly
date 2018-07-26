@@ -23,4 +23,14 @@ class UsersController extends Controller
 
         return view('user.show', ['user' => $user]);
     }
+
+    public function index()
+    {
+//        $users = User::orderBy('created_at', 'DESC')->simplePaginate(12);
+
+        $users = User::withCount('subscribers')->orderBy('subscribers_count', 'desc')->simplePaginate(10);
+
+
+        return view('user.index', ['users' => $users]);
+    }
 }

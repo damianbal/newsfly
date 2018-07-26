@@ -11,9 +11,13 @@
 |
 */
 
+Route::redirect('/', '/dashboard/index');
+Route::redirect('/dashboard', '/dashboard/index');
+
 Route::get('/dashboard/index', 'Dashboard\IndexController@index')->name('dashboard-index');
 
-Route::get('/user/{id}', 'UsersController@show');
+Route::get('/user/{id}', 'UsersController@show')->name('user-show');
+Route::get('/users', 'UsersController@index')->name('users-show');
 
 Route::view('/404', '404');
 
@@ -28,12 +32,17 @@ Route::get('/sign-in', 'SignInController@show')->name('sign-in');
 Route::post('/sign-in', 'SignInController@submit')->name('sign-in-submit');
 
 Route::post('/user/subscribe', 'SubscribeController@submit')->name('subscribe-submit');
+Route::get('/user/unsubscribe/{user}/{email}', 'SubscribeController@unsubscribe')->name('unsubscribe');
 
 Route::get('/sign-out', 'SignInController@signOut')->name('sign-out');
 
 Route::get('/dashboard/posts/create', 'Dashboard\PostsController@create')->name('posts-create');
 Route::post('/dashboard/posts/store', 'Dashboard\PostsController@store')->name('posts-submit');
+Route::get('/dashboard/posts/index', 'Dashboard\PostsController@index')->name('posts-index');
+Route::get('/dashboard/posts/delete/{post}', 'Dashboard\PostsController@delete')->name('posts-delete');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::get('/dashboard/emails/send', 'Dashboard\SendEmailNewsController@send')->name('news-send');

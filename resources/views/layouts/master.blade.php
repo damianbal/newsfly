@@ -47,7 +47,7 @@
                     <a class="nav-link" href="{{ route('dashboard-index') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{{ route('sign-out') }}">Sign out</a>
+                    <a class="nav-link" href="{{ route('sign-out') }}">Sign out ({{ Auth::user()->name }})</a>
                     </li>
                     @endauth
                   </ul>
@@ -61,21 +61,21 @@
           <div class="col-12">
             @if(Session::has('messages'))
               <div class="alert alert-primary" role="alert">
-                  <ul>
+                 
                     @foreach(Session::get('messages') as $message) 
-                      <li>{{ $message }} </li>
+                     {{ $message }}
                     @endforeach
-                  </ul>
+               
                 </div>
             @endif
 
                 @if ($errors->any())
                 <div class="alert alert-danger" role="alert">
-                    <ul>
+               
                         @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                           {{ $error }}
                         @endforeach
-                    </ul>
+                  
                   </div>
                 @endif
           </div>
@@ -101,5 +101,9 @@
     <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
     <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+    <script>
+      $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})</script>
   </body>
 </html>

@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Jobs\SendNews;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        // send news every sunday on 20:00
+        $schedule->job(new SendNews)->weekly(6, '20:00');
     }
 
     /**

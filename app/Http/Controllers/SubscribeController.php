@@ -22,4 +22,16 @@ class SubscribeController extends Controller
 
         return back()->with('messages', ['You subscribed!']);
     }
+
+    public function unsubscribe(Request $request, User $user, $email) {
+
+        // check if subscribed
+        $sub = $user->subscribers()->where('email', $email)->first();
+
+        if($sub != null) {
+            $sub->delete();
+        }
+
+        return redirect()->route('user-show', [$user->id])->with('messages', ['Unsubscribed!']);
+    }
 }
