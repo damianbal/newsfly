@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/dashboard/index', 'Dashboard\IndexController@index');
+Route::get('/dashboard/index', 'Dashboard\IndexController@index')->name('dashboard-index');
 
 Route::get('/user/{id}', 'UsersController@show');
 
@@ -30,6 +30,9 @@ Route::post('/sign-in', 'SignInController@submit')->name('sign-in-submit');
 Route::post('/user/subscribe', 'SubscribeController@submit')->name('subscribe-submit');
 
 Route::get('/sign-out', 'SignInController@signOut')->name('sign-out');
+
+Route::get('/dashboard/posts/create', 'Dashboard\PostsController@create')->name('posts-create');
+Route::post('/dashboard/posts/store', 'Dashboard\PostsController@store')->name('posts-submit');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
