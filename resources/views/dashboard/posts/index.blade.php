@@ -7,6 +7,8 @@
 @if(count($posts) < 1)
 <div class="text-center display-4 p-3 text-muted">
     There is no posts!
+    <br>
+<a href='{{ route('posts-create') }}' class="btn btn-secondary"><i class="fas fa-plus"></i> Create new post</a>
 </div>
 
 @endif

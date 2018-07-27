@@ -15,7 +15,7 @@ class SendEmailNewsController extends Controller
 
         if(count($subs) > 0 && count($posts) > 0) {
             foreach ($subs as $sub) {
-                Mail::send('mails.mail', ['posts' => $posts, 'user' => $request->user()->name], function($message) use ($request, $sub) {
+                Mail::send('mails.mail', ['unsub_url' => route('unsubscribe', [$request->user()->id, $sub->email]), 'posts' => $posts, 'user' => $request->user()->name], function($message) use ($request, $sub) {
                     $message->from('newsfly@newsfly.com', "Newsfly: " . $request->user()->name);
                     $message->to( $sub->email );
                 });

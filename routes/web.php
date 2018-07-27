@@ -32,7 +32,8 @@ Route::get('/sign-in', 'SignInController@show')->name('sign-in');
 Route::post('/sign-in', 'SignInController@submit')->name('sign-in-submit');
 
 Route::post('/user/subscribe', 'SubscribeController@submit')->name('subscribe-submit');
-Route::get('/user/unsubscribe/{user}/{email}', 'SubscribeController@unsubscribe')->name('unsubscribe');
+
+Route::get('/user/unsubscribe/{user}/{email}', 'UnsubscribeController@unsubscribe')->name('unsubscribe');
 
 Route::get('/sign-out', 'SignInController@signOut')->name('sign-out');
 
