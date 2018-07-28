@@ -13,7 +13,7 @@ class SubscribeController extends Controller
     {
         $user = User::find($request->input('user_id'));
 
-        $result = $user->subscribers()->where('email', $request->input('email'))->take(1)->get();
+        $result = $user->subscribers()->where('email', $request->input('email'))->get();
 
         if (count($result) > 0) {
             return back()->with('messages', ['You are already subscribed to that user!']);
