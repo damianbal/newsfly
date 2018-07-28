@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
@@ -13,11 +13,11 @@ class UsersController extends Controller
      * @param Request $request
      * @return void
      */
-    public function show(Request $request, $id) 
+    public function show(Request $request, $id)
     {
         $user = User::find($id);
 
-        if($user == null) {
+        if ($user == null) {
             return redirect('/404');
         }
 
@@ -29,7 +29,6 @@ class UsersController extends Controller
 //        $users = User::orderBy('created_at', 'DESC')->simplePaginate(12);
 
         $users = User::withCount('subscribers')->orderBy('subscribers_count', 'desc')->simplePaginate(10);
-
 
         return view('user.index', ['users' => $users]);
     }

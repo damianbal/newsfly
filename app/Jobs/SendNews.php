@@ -2,14 +2,13 @@
 
 namespace App\Jobs;
 
+use App\Core\NewsSender;
+use App\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use App\User;
-use Illuminate\Support\Facades\Mail;
-use App\Core\NewsSender;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 class SendNews implements ShouldQueue
 {
@@ -35,8 +34,8 @@ class SendNews implements ShouldQueue
         // get all the users
         $users = User::all();
 
-        foreach($users as $user) {
-           NewsSender::send($user->id);
+        foreach ($users as $user) {
+            NewsSender::send($user->id);
         }
     }
 }
