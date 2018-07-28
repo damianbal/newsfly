@@ -14,7 +14,7 @@
 /**
  * Dashboard
  */
-Route::redirect('/', '/dashboard/index');
+//Route::redirect('/dashboard', '/dashboard/index');
 Route::redirect('/dashboard', '/dashboard/index');
 Route::get('/dashboard/index', 'Dashboard\IndexController@index')->name('dashboard-index');
 
