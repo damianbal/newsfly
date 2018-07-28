@@ -97,7 +97,7 @@
   <footer class="container mt-2 footer">
     <div class="row">
       <div class="col-12">
-        <a href="{{ route('home') }}">Newsfly</a> (&copy;) 2018 / <a href='{{ route(' dashboard-index ') }}'>Dashboard</a>
+        <a href="{{ route('home') }}">Newsfly</a> (&copy;) 2018 / <a href='{{ route('dashboard-index') }}'>Dashboard</a>
       </div>
     </div>
   </footer>
