@@ -1,12 +1,17 @@
-@extends('layouts.master') @section('title') Sign Up @endsection @section('content')
+@extends('layouts.master') @section('title') Sign Up @endsection 
+
+@section('title_head') Sign up @endsection
+
+
+@section('content')
 
 <div class="alert alert-info" role="alert">
-    <i class="fas fa-info-circle"></i> Sign Up for an account so you can create posts and users who subscribe to you can get them!
+    <i class="fas fa-info-circle"></i> Sign Up for an account so you can create posts and users who subscribe to you can
+    get them!
 </div>
 
 <div class="alert alert-secondary" role="alert">
     <i class="fas fa-lightbulb"></i> If you just want to subscribe to an account, you don't need to create account!
-
 </div>
 
 <form method="POST" action="{{ route('sign-up-submit') }}">

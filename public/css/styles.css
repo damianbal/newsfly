@@ -1,19 +1,57 @@
-html { height: 100%; }
-body  {
-  background: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 100%;
-  font-family: 'Nunito', sans-serif;
-  color:rgb(110,110,110);
-  -webkit-font-smoothing: antialiased;
+html {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Nunito', sans-serif;
+    color: rgb(110, 110, 110);
+    -webkit-font-smoothing: antialiased;
+}
+
+.menu {
+    background: rgb(70, 70, 70);
+    min-height: 52px;
+}
+
+.menu a {
+    line-height: 52px;
+    padding-left: 16px;
+    padding-right: 16px;
+    color: rgb(200, 200, 200);
 }
 
 .footer {
-    color: rgb(230,230,230);
-    font-size:14px;
+    color: rgb(230, 230, 230);
+    font-size: 14px;
 }
+
 .footer a {
-    color: rgb(230,230,230);
-    font-size:14px;
+    color: rgb(230, 230, 230);
+    font-size: 14px;
+}
+
+a {
+    color: #ff0844;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+a:hover {
+    color: #ffb199;
+    transition: all 0.5s;
+    text-decoration: none;
+}
+
+/** Dashboard **/
+
+.navbg {
+    background: #ff0844 !important;
+}
+
+.btn-primary {
+    color: #ff0844 !important;
 }

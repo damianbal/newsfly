@@ -1,11 +1,13 @@
 @extends('layouts.main')
 
 @section('title')
-Page not found 
+404
 @endsection
 
+@section('title_head') 404 @endsection
+
+
 @section('content')
-<h2>404</h2>
 <p>
     Sorry but that page doesn't exist!
 </p>

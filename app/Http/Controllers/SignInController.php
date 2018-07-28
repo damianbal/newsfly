@@ -14,11 +14,9 @@ class SignInController extends Controller
 
     public function submit(Request $request)
     {
-        if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')]))
-        {
-            return redirect()->route('home')->with('messages', ['You have been signed in!']);
-        }
-        else {
+        if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+            return redirect()->route('dashboard-index')->with('messages', ['You have been signed in!']);
+        } else {
             return back()->with('messages', ['Account does not exist or email and password do not match!']);
         }
     }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Subscriber;
+use App\User;
 use Illuminate\Http\Request;
 
 class UnsubscribeController extends Controller
@@ -13,7 +15,7 @@ class UnsubscribeController extends Controller
      */
     public function index()
     {
-
+        return view('unsubscribe.form');
     }
 
     /**
@@ -21,9 +23,15 @@ class UnsubscribeController extends Controller
      *
      * @return void
      */
-    public function show()
-    {       
+    public function show(Request $request)
+    {
+        $data = $request->validate([
+            'email' => 'required|email|min:3',
+        ]);
 
+        $subs = Subscriber::where('email', $data['email'])->get();
+
+        return view('unsubscribe.list', ['subscribers' => $subs]);
     }
 
     /**
@@ -34,12 +42,13 @@ class UnsubscribeController extends Controller
      * @param string $email
      * @return Redirect
      */
-    public function unsubscribe(Request $request, User $user, $email) {
+    public function unsubscribe(Request $request, User $user, $email)
+    {
 
         // check if subscribed
         $sub = $user->subscribers()->where('email', $email)->first();
 
-        if($sub != null) {
+        if ($sub != null) {
             $sub->delete();
         }
 

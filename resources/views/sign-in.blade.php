@@ -1,7 +1,12 @@
-@extends('layouts.master') @section('title') Sign In @endsection @section('content')
+@extends('layouts.master') @section('title') Sign In @endsection 
+
+@section('title_head') Sign in @endsection
+
+
+@section('content')
 
 <div class="alert alert-info" role="alert">
-<i class="fas fa-info-circle"></i> Do you need an account? <a class="alert-link" href='{{ route('sign-up') }}'>Sign up</a>
+    <i class="fas fa-info-circle"></i> Do you need an account? <a class="alert-link" href='{{ route(' sign-up ') }}'>Sign up</a>
 </div>
 
 

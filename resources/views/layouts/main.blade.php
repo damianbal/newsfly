@@ -19,7 +19,7 @@
 
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
-    <title>Hello, world!</title>
+    <title>Newsfly - @yield('title_head', 'Newsfly')</title>
 
   </head>
   <body>
@@ -55,8 +55,13 @@
       </div>
     </header>
 
+    <nav class="menu mt-3 container">
+    <a href='{{ route('home') }}'>Home</a>
+      <a href='{{ route('users-show') }}'>Users</a>
+    <a href='{{ route('unsubscribe-form') }}'>Unsubscribe</a>
+    </nav>
 
-    <div class="container mt-2 p-4" style="background: rgb(244,244,244); box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.1);">
+    <div class="container p-4" style="background: rgb(244,244,244); box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.1);">
         <div class="row">
           <div class="col-12">
             @if(Session::has('messages'))
@@ -94,7 +99,7 @@
     <footer class="container mt-2 footer">
       <div class="row">
         <div class="col-12">
-        <a href="{{ route('home') }}">Newsfly</a> (&copy;) 2018
+        <a href="{{ route('home') }}">Newsfly</a> (&copy;) 2018 /     <a href='{{ route('dashboard-index') }}'>Dashboard</a>
         </div>
       </div>
       </footer>

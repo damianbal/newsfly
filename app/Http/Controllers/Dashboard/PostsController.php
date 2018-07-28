@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
+use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    public function __construct() 
+    public function __construct()
     {
         $this->middleware('auth');
-
     }
 
     public function index(Request $request)
     {
         $posts = $request->user()->posts()->orderBy('created_at', 'DESC')->get();
 
-       return view('dashboard.posts.index', ['posts' => $posts]);
+        return view('dashboard.posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -32,11 +31,12 @@ class PostsController extends Controller
     }
 
     /**
-     * Remove the post 
+     * Remove the post
      */
     public function delete(Request $request, Post $post)
     {
-        if($request->user()->can('delete', $post)) {
+        // check if user can delete this post
+        if ($request->user()->can('delete', $post)) {
             $post->delete();
             return back()->with('messages', ['Post has been removed!']);
         }
@@ -54,15 +54,14 @@ class PostsController extends Controller
     {
         $data = $request->validate([
             'title' => 'required|min:3',
-            'content' => 'required|min:10'
+            'content' => 'required|min:10',
         ]);
 
-        $data['user_id'] = $request->user()->id; 
+        $data['user_id'] = $request->user()->id;
 
         $post = Post::create($data);
 
         return back()->with('messages', ['Post created with ID: ' . $post->id]);
     }
-
 
 }

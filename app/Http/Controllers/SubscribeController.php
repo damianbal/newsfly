@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Events\Subscribed;
 use App\Subscriber;
 use App\User;
+use Illuminate\Http\Request;
 
 class SubscribeController extends Controller
 {
@@ -14,32 +15,15 @@ class SubscribeController extends Controller
 
         $result = $user->subscribers()->where('email', $request->input('email'))->take(1)->get();
 
-        if(count($result) > 0) {
+        if (count($result) > 0) {
             return back()->with('messages', ['You are already subscribed to that user!']);
         }
 
         $subscriber = Subscriber::create($request->all());
 
+        event(new Subscribed($user, $request->input('email')));
+
         return back()->with('messages', ['You subscribed!']);
     }
 
-    /**
-     * For email link unsubscribe
-     *
-     * @param Request $request
-     * @param User $user
-     * @param string $email
-     * @return Redirect
-     */
-    public function unsubscribe(Request $request, User $user, $email) {
-
-        // check if subscribed
-        $sub = $user->subscribers()->where('email', $email)->first();
-
-        if($sub != null) {
-            $sub->delete();
-        }
-
-        return redirect()->route('user-show', [$user->id])->with('messages', ['Unsubscribed!']);
-    }
 }

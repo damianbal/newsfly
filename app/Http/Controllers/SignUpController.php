@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class SignUpController extends Controller
 {
     public function show()
-    {   
+    {
         return view('sign-up');
     }
 
@@ -21,7 +19,7 @@ class SignUpController extends Controller
                 'email' => 'email|required|min:3|unique:users',
                 'password' => 'min:4|required',
                 'name' => 'min:3|required',
-                'description' => 'min:5|required'
+                'description' => 'min:5|required',
             ]
         );
 
