@@ -29,7 +29,7 @@ class NewsSender
 
         foreach ($subs as $sub) {
             Mail::send('mails.mail', ['unsub_url' => route('unsubscribe', [$user->id, $sub->email]), 'posts' => $posts, 'user' => $user->name], function ($message) use ($user, $sub) {
-                $message->from('newsfly@newsfly.com', "Newsfly: " . $user->name);
+                $message->from('newsfly@damianbalandowski.com', "Newsfly: " . $user->name);
                 $message->to($sub->email);
                 $message->subject('News from ' . $user->name);
             });

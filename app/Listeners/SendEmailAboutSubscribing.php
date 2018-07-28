@@ -29,7 +29,7 @@ class SendEmailAboutSubscribing
         $email = $event->email;
 
         Mail::send('mails.subscribtion', ['unsub_url' => route('unsubscribe', [$user->id, $email]), 'user' => $user], function ($message) use ($user, $email) {
-            $message->from('newsfly@newsfly.com', "Newsfly: " . $user->name);
+            $message->from('newsfly@damianbalandowski.com', "Newsfly: " . $user->name);
             $message->to($email);
             $message->subject('You subscribed to  ' . $user->name . " on Newsfly!");
         });
