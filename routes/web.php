@@ -71,6 +71,7 @@ Route::get('/dashboard/emails/send', 'Dashboard\SendEmailNewsController@send')->
 /**
  * Voyager
  */
+/*
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-});
+});*/

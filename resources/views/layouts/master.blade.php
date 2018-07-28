@@ -18,7 +18,7 @@
 
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-  <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+  <link rel="stylesheet" href="{{ secure_asset('css/styles.css') }}">
 
   <title>Newsfly Dashboard - @yield('title_head', '')</title>
 

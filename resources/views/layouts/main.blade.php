@@ -20,7 +20,7 @@
 
 
 
-  <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+  <link rel="stylesheet" href="{{ secure_asset('css/styles.css') }}">
 
   <title>Newsfly - @yield('title_head', 'Newsfly')</title>
 
@@ -60,9 +60,9 @@
   </header>
 
   <nav class="menu mt-3 container">
-    <a href='{{ route(' home ') }}'>Home</a>
-    <a href='{{ route(' users-show ') }}'>Users</a>
-    <a href='{{ route(' unsubscribe-form ') }}'>Unsubscribe</a>
+    <a href='{{ route('home') }}'>Home</a>
+    <a href='{{ route('users-show') }}'>Users</a>
+    <a href='{{ route('unsubscribe-form') }}'>Unsubscribe</a>
   </nav>
 
   <div class="container p-4" style="background: rgb(244,244,244); box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.1);">
